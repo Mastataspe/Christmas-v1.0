@@ -1,9 +1,3 @@
-var express = require('express');
-app = express();
-
-app.get('/', function (req, res) { 
-
-    // res.send('Hello World!\n');
   // current timestamp in milliseconds
   let dateObject = Date.now();
   
@@ -71,10 +65,3 @@ app.get('/', function (req, res) {
   
   // print how many days till Christmas
   console.log("There are " + daysTillChristmas + " until Christmas.");
-});
-
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080!');
-});
-
-
