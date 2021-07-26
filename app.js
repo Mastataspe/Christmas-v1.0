@@ -1,41 +1,67 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-module.exports = app;
+  // current timestamp in milliseconds
+  let dateObject = Date.now();
+  
+  // parse the date object
+  let currentDate = new Date(dateObject);
+  
+  // current day
+  let date = currentDate.getDate();
+  
+  // current month
+  var month = null;
+  
+  // determine the current month in string format
+  switch (currentDate.getMonth()) {
+      case 0:
+          month = 'January';
+          break;
+      case 1:
+          month = 'February'
+          break;
+      case 2:
+          month = 'March'
+          break;
+      case 3:
+          month = 'April'
+          break;
+      case 4:
+          month = 'May'
+          break;
+      case 5:
+          month = 'June'
+          break;
+      case 6:
+          month = 'July'
+          break;
+      case 7:
+          month = 'August'
+          break;
+      case 8:
+          month = 'September'
+          break;
+      case 9:
+          month = 'October'
+          break;
+      case 10:
+          month = 'November'
+          break;
+      case 11:
+          month = 'December'
+          break;
+      default:
+  }
+  
+  // current year
+  let year = currentDate.getFullYear();
+  
+  // create a Christmas date object based on the current  year
+  let christmas = new Date(year, 11, 25);
+  
+  // print date in Month DD, YYYY format
+  console.log("Today's date is " + month + " " + date + ", " + year + ".");
+  
+  // Calculate how many days till Christmas
+  let daysTillChristmas = Math.floor((christmas.getTime() - currentDate.getTime()) / (1000*60*60*24));
+  
+  // print how many days till Christmas
+  console.log("There are " + daysTillChristmas + " until Christmas.");
